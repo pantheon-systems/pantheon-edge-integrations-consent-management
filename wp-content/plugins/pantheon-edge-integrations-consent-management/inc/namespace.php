@@ -17,6 +17,7 @@ function bootstrap() {
 	$plugin = WP_PLUGIN_DIR . '/pantheon-wordpress-edge-integrations/pantheon-wordpress-edge-integrations.php';
 	add_filter( "wp_consent_api_registered_$plugin", '__return_true' );
 	add_filter( 'wp_get_consent_type', __NAMESPACE__ . '\\set_consent_type' );
+	add_action( 'init', __NAMESPACE__ . '\\check_consent' );
 }
 
 /**
@@ -49,6 +50,28 @@ function register_cookies() {
 	);
 }
 
+/**
+ * Check for cookie consent. If consent hasn't been given, don't vary on interest or geo.
+ */
+function check_consent() {
+	if ( ! function_exists( 'wp_has_consent' ) ) {
+		return;
+	}
+
+	if ( ! wp_has_consent( 'marketing' ) ) {
+		// If consent hasn't been granted, don't vary the cache.
+		add_filter( 'pantheon.ei.supported_vary_headers', function() {
+			return [
+				'Audience-Set' => false,
+				'Audience' => false,
+				'Interest' => false,
+			];
+		 } );
+
+		// Dequeue the interest script.
+		wp_dequeue_script( 'pantheon-ei-interest' );
+	}
+}
 
 /**
  * Defines the consent type.
