@@ -18,6 +18,9 @@ function bootstrap() {
 	add_filter( "wp_consent_api_registered_$plugin", '__return_true' );
 }
 
+/**
+ * Register the cookies with the Consent API.
+ */
 function register_cookies() {
 	if ( function_exists( 'wp_add_cookie_info' ) ) {
 		// Register the Interest cookie.
