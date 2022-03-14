@@ -1,0 +1,19 @@
+.cookie-consent-banner {
+	display: none;
+	max-width: 100%;
+	width: 100%;
+	background: rgba( 255, 255, 255, 0.7 );
+	position: fixed;
+	bottom: 0;
+	z-index: 99;
+
+	&__updated__close {
+		background: transparent;
+		padding: 3px;
+		border: 1px solid rgba( 0, 0, 0, 0.4 );
+		color: rgba( 0, 0, 0, 0.4 );
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
