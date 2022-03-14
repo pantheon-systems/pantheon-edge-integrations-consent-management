@@ -18,6 +18,28 @@ function bootstrap() {
 	add_filter( "wp_consent_api_registered_$plugin", '__return_true' );
 	add_filter( 'wp_get_consent_type', __NAMESPACE__ . '\\set_consent_type' );
 	add_action( 'init', __NAMESPACE__ . '\\check_consent' );
+	if ( ! is_admin() ) {
+		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
+		add_action( 'wp_footer', __NAMESPACE__ . '\\load_consent_banner' );
+	}
+}
+
+/**
+ * Enqueue CSS and JS.
+ */
+function enqueue_assets() {
+	$js = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? plugin_dir_url( __DIR__ ) . 'assets/js/main.js' : plugin_dir_url( __DIR__ ) . 'dist/js/main.js';
+	$css = plugin_dir_url( __DIR__ ) . 'dist/css/styles.css';
+
+	wp_enqueue_script( 'pantheon-ei-consent', $js, [ 'wp-consent-api' ], '0.1.0', true );
+	wp_enqueue_style( 'pantheon-ei-consent', $css, [], '0.1.0', 'screen' );
+}
+
+/**
+ * Load the consent banner.
+ */
+function load_consent_banner() {
+	load_template( plugin_dir_path( __DIR__ ) . 'templates/cookie-banner.php' );
 }
 
 /**
