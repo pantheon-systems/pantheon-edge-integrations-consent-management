@@ -1,0 +1,25 @@
+{
+  "name": "pantheon-edge-integrations-consent-management",
+  "version": "0.1.0",
+  "description": "Implements the WP Consent API to manage consent with Pantheon Edge Integrations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
+    "watch": "gulp watch"
+  },
+  "author": "Pantheon Systems <hello@pantheon.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0",
+    "gulp-autoprefixer": "^7.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-sass": "^5.1",
+    "gulp-terser": "^2.1.0",
+    "node-sass": "^7.0",
+    "sass": "^1.49.9"
+  },
+  "dependencies": {
+  }
+}
