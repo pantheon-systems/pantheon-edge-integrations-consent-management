@@ -1,11 +1,8 @@
-name: Pantheon Edge Integrations Consent Management Release
+name: Release
 on:
   push:
     tags:
       - '*'
-  pull_request:
-    branches:
-      - 'maybe-fix-build'
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -15,15 +12,18 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
 
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
     # Populate changelog. Could be done on release instead.
     # Source: https://github.com/johnbillion/user-switching/blob/develop/.github/workflows/deploy-tag.yml
     - name: Install Dependencies
-      run: |
-        ls ${cwd}
-        cd ${{ github.workflow.workflow_event.payload.repository.name }}
-        npm install
+      run: npm install
 
     - name: Populate Changelog
-      run: node .github/workflows/changelog.js README.md
+      run: |
+        node .github/workflows/changelog.js README.md
+        git add CHANGELOG.md
+        git commit -m "Updated changelog"
       env:
         TOKEN: ${{ secrets.GIT_TOKEN }}
