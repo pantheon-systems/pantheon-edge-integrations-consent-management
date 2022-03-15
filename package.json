@@ -11,7 +11,7 @@
   "author": "Pantheon Systems <hello@pantheon.io>",
   "license": "MIT",
   "devDependencies": {
-    "@actions/github": "^5.0.0",
+    "@actions/github": "^2",
     "del": "^6.0.0",
     "gulp": "^4.0",
     "gulp-autoprefixer": "^7.0",
