@@ -1,0 +1,23 @@
+name: Pantheon Edge Integrations Consent Management Release
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+
+    # Populate changelog. Could be done on release instead.
+    # Source: https://github.com/johnbillion/user-switching/blob/develop/.github/workflows/deploy-tag.yml
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Populate Changelog
+      run: node .github/workflows/changelog.js README.md
+      env:
+        TOKEN: ${{ secrets.GIT_TOKEN }}
