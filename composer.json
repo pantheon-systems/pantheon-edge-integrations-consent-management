@@ -1,0 +1,31 @@
+{
+    "name": "pantheon-systems/pantheon-edge-integrations-consent-management",
+    "description": "Implements WP Consent API into Pantheon Edge Integrations to manage consent and data tracking.",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pantheon",
+            "email": "hello@pantheon.io"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/rlankhorst/wp-consent-level-api.git"
+        }
+    ],
+    "require": {
+        "rlankhorst/wp-consent-level-api": "dev-master as 1.0.0"
+    },
+    "require-dev": {
+        "humanmade/coding-standards": "^1.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
