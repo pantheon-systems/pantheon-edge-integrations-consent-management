@@ -1,4 +1,4 @@
-name: Pantheon Edge Integrations Consent Management Lint and Test
+name: Build
 on:
   push:
     # This job is copied in build.yml so we can use the
@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install dependencies
-      run: composer install
+      run: composer install && npm install
     - name: Run lint
       run: composer lint
     - name: Run unit tests
