@@ -32,9 +32,11 @@ jobs:
       run: |
         git config --local user.email "bot@getpantheon.com"
         git config --local user.name "Pantheon Automation"
+        rm -rf vendor/automattic/ vendor/bin/ vendor/composer/ vendor/dealerdirect/ vendor/doctrine/ vendor/fig-r/ vendor/humanmade/ vendor/myclabs/ vendor/nikic/ vendor/phar-io/ vendor/phpcompatibility/ vendor/phpdocumentor/ vendor/phpspec/ vendor/phpunit/ vendor/sebastian/ vendor/squizlabs/ vendor/symphony/ vendor/symfony/ vendor/theseer/ vendor/webmozart/ vendor/wordpress/ vendor/wp-coding-standards/ vendor/rlankhorst/wp-consent-level-api/.git/
+        rm vendor/autoload.php
         git add -f dist/ vendor/
         rm -rf assets/
-        git add -f dist/js/main.js dist/css/styles.css
+        git add -f assets/ dist/js/main.js dist/css/styles.css
         git status
         git commit -m "Built assets"
     - name: Push changes
