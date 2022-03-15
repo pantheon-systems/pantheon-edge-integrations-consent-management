@@ -3,6 +3,9 @@ on:
   push:
     tags:
       - '*'
+  pull_request:
+    branches:
+      - 'maybe-fix-build'
 jobs:
   release:
     runs-on: ubuntu-latest
