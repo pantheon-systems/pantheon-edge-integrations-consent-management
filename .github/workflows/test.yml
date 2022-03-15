@@ -1,4 +1,4 @@
-name: Build
+name: Test
 on:
   push:
     # This job is copied in build.yml so we can use the
