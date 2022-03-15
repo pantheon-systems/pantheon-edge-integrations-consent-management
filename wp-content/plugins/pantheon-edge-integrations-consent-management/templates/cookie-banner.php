@@ -8,8 +8,8 @@
 ?>
 <div class="cookie-consent-banner">
 	<?php load_template( __DIR__ . '/part-updated.php' ); ?>
-	<div class="cookie_consent_banner__inner">
-		<div class="cookie_consent_banner__inner__message">
+	<div class="cookie-consent-banner__inner">
+		<div class="cookie-consent-banner__inner__message">
 			<?php
 			echo wp_kses_post(
 				'<p>' .
@@ -22,10 +22,10 @@
 			);
 			?>
 		</div>
-		<button class="cookie_consent_banner__inner__button give-consent">
+		<button class="cookie-consent-banner__inner__button give-consent">
 			<?php esc_html_e( 'Accept all cookies', 'pantheon-edge-integrations-consent-management' ); ?>
 		</button>
-		<button class="cookie_consent_banner__inner__button revoke-consent">
+		<button class="cookie-consent-banner__inner__button revoke-consent">
 			<?php esc_html_e( 'Accept only functional cookies', 'pantheon-edge-integrations-consent-management' ); ?>
 		</button>
 	</div>
