@@ -1,4 +1,4 @@
-name: Pantheon Edge Integrations Consent Management Release
+name: Release
 on:
   push:
     tags:
