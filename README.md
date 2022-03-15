@@ -10,7 +10,7 @@ Contributors: jazzs3quence, getpantheon
 
 Implements [WP Consent API](https://github.com/rlankhorst/WP-Consent-Level-API) into [Pantheon Edge Integrations](https://pantheon.io/docs/guides/edge-integrations) to manage consent and data tracking. 
 
-[![Unsupported](https://img.shields.io/badge/pantheon-unsupported-yellow?logo=pantheon&color=FFDC28)](https://pantheon.io/docs/oss-support-levels#unsupported) ![Pantheon WordPress Edge Integrations](https://github.com/pantheon-systems/pantheon-wordpress-edge-integrations/actions/workflows/test.yml/badge.svg) [![GitHub release](https://img.shields.io/github/release/pantheon-systems/pantheon-wordpress-edge-integrations.svg)](https://github.com/pantheon-systems/pantheon-wordpress-edge-integrations/releases/)
+[![Unsupported](https://img.shields.io/badge/pantheon-unsupported-yellow?logo=pantheon&color=FFDC28)](https://pantheon.io/docs/oss-support-levels#unsupported) ![Pantheon Edge Integrations Consent Management](https://github.com/pantheon-systems/pantheon-edge-integrations-consent-management/actions/workflows/test.yml/badge.svg) [![GitHub release](https://img.shields.io/github/release/pantheon-systems/pantheon-edge-integrations-consent-management.svg)](https://github.com/pantheon-systems/pantheon-edge-integrations-consent-management/releases/)
 
 ## Description
 
