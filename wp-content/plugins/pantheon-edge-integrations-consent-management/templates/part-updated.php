@@ -11,8 +11,11 @@
 		<span class="cookie-consent-banner__updated__message">
 			<?php esc_html_e( 'Cookie preferences updated.', 'pantheon-edge-integrations-consent-management' ); ?>
 		</span>
-		<button class="cookie-consent-banner__updated-close">
-			<?php esc_html_e( 'Close', 'pantheon-edge-integrations-consent-management' ); ?>
-		</button>
 	</p>
+	<button class="cookie-consent-banner__updated-close">
+			<span class="screen-reader-text">
+				<?php esc_html_e( 'Close', 'pantheon-edge-integrations-consent-management' ); ?>
+			</span>
+			<span class="dashicons dashicons-no-alt"></span>
+		</button>
 </div>
