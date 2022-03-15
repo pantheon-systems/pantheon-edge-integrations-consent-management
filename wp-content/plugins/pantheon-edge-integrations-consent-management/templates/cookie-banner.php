@@ -28,5 +28,11 @@
 		<button class="cookie-consent-banner__inner__button revoke-consent">
 			<?php esc_html_e( 'Accept only functional cookies', 'pantheon-edge-integrations-consent-management' ); ?>
 		</button>
+		<button class="cookie-consent-banner__inner__button close">
+			<span class="screen-reader-text">
+				<?php esc_html_e( 'Close', 'pantheon-edge-integrations-consent-management' ); ?>
+			</span>
+			<span class="dashicons dashicons-no-alt"></span>
+		</button>
 	</div>
 </div>
