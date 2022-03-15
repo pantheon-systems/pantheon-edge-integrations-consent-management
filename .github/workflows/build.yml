@@ -1,4 +1,4 @@
-name: Pantheon Edge Integrations Consent Management Build
+name: Build
 on:
   pull_request:
     branches:
@@ -21,20 +21,14 @@ jobs:
     name: Build
     steps:
     - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Compile assets
+    - name: Compile & commit assets
       run: |
         composer install --no-dev -o
         npm install
         npm run build
-    - name: Add and commit build files
-      run: |
         git config --local user.email "bot@getpantheon.com"
         git config --local user.name "Pantheon Automation"
         git add -f dist/ vendor/
-        rm -rf assets/
-        git add -f assets/ dist/js/main.js dist/css/styles.css
         git status
         git commit -m "Built assets"
     - name: Push changes
