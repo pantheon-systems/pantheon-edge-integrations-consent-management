@@ -23,6 +23,13 @@
     "require-dev": {
         "humanmade/coding-standards": "^1.1"
     },
+    "scripts": {
+        "lint:php": "find ./plugin.php ./inc ./tests -name '*.php' -exec php -l {} \\;",
+        "lint:phpcs": "phpcs -s --standard=phpcs.ruleset.xml",
+        "lint:phpcbf": "phpcbf -s --standard=phpcs.ruleset.xml",
+        "lint": "composer lint:php && composer lint:phpcs",
+        "test": "echo 'No tests have been added, skipping tests' && exit 0"
+    },
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
