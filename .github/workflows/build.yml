@@ -34,7 +34,7 @@ jobs:
         git config --local user.name "Pantheon Automation"
         git add -f dist/ vendor/
         rm -rf assets/
-        git add -f dist/js/main.js dist/css/styles.css
+        git add -f assets/ dist/js/main.js dist/css/styles.css
         git status
         git commit -m "Built assets"
     - name: Push changes

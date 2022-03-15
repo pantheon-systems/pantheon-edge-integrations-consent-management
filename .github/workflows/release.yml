@@ -3,6 +3,9 @@ on:
   push:
     tags:
       - '*'
+  pull_request:
+    branches:
+      - 'maybe-fix-build'
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -15,7 +18,10 @@ jobs:
     # Populate changelog. Could be done on release instead.
     # Source: https://github.com/johnbillion/user-switching/blob/develop/.github/workflows/deploy-tag.yml
     - name: Install Dependencies
-      run: npm install
+      run: |
+        ls ${cwd}
+        cd ${{ github.workflow.workflow_event.payload.repository.name }}
+        npm install
 
     - name: Populate Changelog
       run: node .github/workflows/changelog.js README.md
