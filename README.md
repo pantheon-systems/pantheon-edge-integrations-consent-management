@@ -14,10 +14,8 @@ Implements [WP Consent API](https://github.com/rlankhorst/WP-Consent-Level-API) 
 
 ## Description
 
-This plugin provides tools for integrating with Pantheon's Edge features provided by our Advanced Global CDN. Integrate natively with geolocation and interest tracking features to build personalization-enhanced features for your site.
+This plugin provides an interface for managing cookie consent with Edge Integrations: Personalization for WordPress. It's built using the [WP Consent API](https://github.com/rlankhorst/WP-Consent-Level-API) feature plugin to manage consent levels and registers the cookies & local storage data with the Consent API.
 
-If you would like to contribute to this plugin, please see the [CONTRIBUTING.md](https://github.com/pantheon-systems/pantheon-wordpress-edge-integrations/blob/main/CONTRIBUTING.md) file for more information.
-
-## Frequently Asked Questions
+A banner is displayed if no consent has been given yet. The interest and geo tracking functionality does not operate until consent is given. If consent is revoked, neither form of tracking will be active.
 
 <!-- changelog -->
