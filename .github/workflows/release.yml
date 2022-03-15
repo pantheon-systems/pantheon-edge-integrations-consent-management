@@ -21,6 +21,9 @@ jobs:
       run: npm install
 
     - name: Populate Changelog
-      run: node .github/workflows/changelog.js README.md
+      run: |
+        node .github/workflows/changelog.js README.md
+        git add CHANGELOG.md
+        git commit -m "Updated changelog"
       env:
         TOKEN: ${{ secrets.GIT_TOKEN }}
