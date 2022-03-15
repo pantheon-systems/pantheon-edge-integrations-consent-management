@@ -100,7 +100,7 @@ function check_consent() {
 				'Audience' => false,
 				'Interest' => false,
 			];
-		 } );
+		} );
 
 		// Dequeue the interest script.
 		wp_dequeue_script( 'pantheon-ei-interest' );
