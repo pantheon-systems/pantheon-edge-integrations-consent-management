@@ -13,6 +13,9 @@ use Pantheon\EI\WP\Interest;
  * Bootstrap the plugin.
  */
 function bootstrap() {
+	// Check for the WP Consent API.
+	add_action( 'init', __NAMESPACE__ . '\\maybe_require_wp_consent_api', 1 );
+
 	// Register the EI plugin with the Consent API.
 	$plugin = WP_PLUGIN_DIR . '/pantheon-wordpress-edge-integrations/pantheon-wordpress-edge-integrations.php';
 	add_filter( "wp_consent_api_registered_$plugin", '__return_true' );
@@ -21,6 +24,15 @@ function bootstrap() {
 	if ( ! is_admin() ) {
 		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
 		add_action( 'wp_footer', __NAMESPACE__ . '\\load_consent_banner' );
+	}
+}
+
+/**
+ * Require the WP Consent API if it's not already loaded.
+ */
+function maybe_require_wp_consent_api() {
+	if ( ! class_exists( 'WP_CONSENT_API' ) ) {
+		require_once dirname( __FILE__, 2 ) . '/vendor/rlankhorst/wp-consent-level-api/wp-consent-api.php';
 	}
 }
 
