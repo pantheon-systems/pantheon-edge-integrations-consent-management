@@ -5,7 +5,7 @@ on:
       - '*'
   pull_request:
     branches:
-      - 'release-build-scripts'
+      - release-build-scripts
 jobs:
   release:
     runs-on: ubuntu-latest
