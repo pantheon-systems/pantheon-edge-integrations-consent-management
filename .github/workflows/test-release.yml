@@ -15,10 +15,7 @@ jobs:
     # Populate changelog. Could be done on release instead.
     # Source: https://github.com/johnbillion/user-switching/blob/develop/.github/workflows/deploy-tag.yml
     - name: Install Dependencies
-      run: |
-        ls
-        cd ..
-        npm install
+      run: npm install
 
     - name: Populate Changelog
       run: node .github/workflows/changelog.js README.md
