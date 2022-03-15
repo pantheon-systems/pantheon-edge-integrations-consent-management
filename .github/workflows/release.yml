@@ -19,8 +19,8 @@ jobs:
     # Source: https://github.com/johnbillion/user-switching/blob/develop/.github/workflows/deploy-tag.yml
     - name: Install Dependencies
       run: |
-        ls ${cwd}
-        cd ${{ github.workflow.workflow_event.payload.repository.name }}
+        ls
+        cd ..
         npm install
 
     - name: Populate Changelog
