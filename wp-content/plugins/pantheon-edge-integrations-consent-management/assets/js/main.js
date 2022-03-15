@@ -5,7 +5,9 @@ Pantheon.Consent = {
 	revokeConsentButton: document.querySelector('.revoke-consent'),
 	updatedMessage: document.querySelector('.cookie-consent-banner__updated'),
 	closeUpdated: document.querySelector('.cookie-consent-banner__updated-close'),
+	closeBanner: document.querySelector('.cookie-consent-banner__inner__button.close'),
 	consentBanner: document.querySelector('.cookie-consent-banner'),
+	consentMessage: document.querySelector('.cookie-consent-banner__inner'),
 };
 
 Pantheon.Consent.cookieSaved = function () {
@@ -18,15 +20,13 @@ Pantheon.Consent.cookieSaved = function () {
 }
 
 Pantheon.Consent.updateConsent = function () {
-	if ( this.className === 'give-consent' ) {
+	if ( this.classList.contains( 'give-consent' ) ) {
 		wp_set_consent( 'marketing', 'allow' );
 	}
 
-	if ( this.className === 'revoke-consent' ) {
+	if ( this.classList.contains( 'revoke-consent' ) ) {
 		wp_set_consent( 'marketing', 'deny' );
 	}
-
-	document.querySelector( '.cookie-consent-banner' ).classList.add( 'hide' );
 
 	Pantheon.Consent.showUpdatedMessage();
 }
@@ -41,11 +41,18 @@ Pantheon.Consent.maybeDisplayBanner = function () {
 }
 
 Pantheon.Consent.showUpdatedMessage = function () {
-	const consentUpdated = document.querySelector( '.cookie-consent-banner__updated').classList;
-	consentUpdated.toggle( 'show' );
+	const consentUpdated = document.querySelector( '.cookie-consent-banner__updated');
+	consentUpdated.style.display = 'grid';
+	Pantheon.Consent.consentMessage.style.display = 'none';
+
 }
 
 Pantheon.Consent.maybeDisplayBanner();
 Pantheon.Consent.giveConsentButton.addEventListener( 'click', Pantheon.Consent.updateConsent );
 Pantheon.Consent.revokeConsentButton.addEventListener( 'click', Pantheon.Consent.updateConsent );
-Pantheon.Consent.closeUpdated.addEventListener( 'click', () => Pantheon.Consent.showUpdatedMessage.toggle( 'show' ) );
+Pantheon.Consent.closeUpdated.addEventListener( 'click', () => {
+	Pantheon.Consent.consentBanner.style.display = 'none';
+} );
+Pantheon.Consent.closeBanner.addEventListener( 'click', () => {
+	Pantheon.Consent.consentBanner.style.display = 'none';
+} );
