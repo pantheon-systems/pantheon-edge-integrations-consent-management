@@ -92,7 +92,7 @@ function check_consent() {
 	if ( ! wp_has_consent( 'marketing' ) ) {
 		// If consent hasn't been granted, don't vary the cache.
 		add_filter( 'pantheon.ei.supported_vary_headers', __NAMESPACE__ . '\\do_not_send_vary_headers' );
-		 add_filter( 'pantheon.ei.post_types', __NAMESPACE__ . '\\do_not_allow_any_post_types' );
+		add_filter( 'pantheon.ei.post_types', __NAMESPACE__ . '\\do_not_allow_any_post_types' );
 	}
 }
 
