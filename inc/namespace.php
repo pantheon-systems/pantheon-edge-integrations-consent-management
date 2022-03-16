@@ -91,17 +91,30 @@ function check_consent() {
 
 	if ( ! wp_has_consent( 'marketing' ) ) {
 		// If consent hasn't been granted, don't vary the cache.
-		add_filter( 'pantheon.ei.supported_vary_headers', function() {
-			return [
-				'Audience-Set' => false,
-				'Audience' => false,
-				'Interest' => false,
-			];
-		} );
+}
 
-		// Dequeue the interest script.
-		wp_dequeue_script( 'pantheon-ei-interest' );
-	}
+/**
+ * Callback function for the `pantheon.ei.supported_vary_headers` filter.
+ * Denies all vary headers.
+ *
+ * @return array An array of rejected vary headers.
+ */
+function do_not_send_vary_headers() : array {
+	return [
+		'Audience-Set' => false,
+		'Audience' => false,
+		'Interest' => false,
+	];
+}
+
+/**
+ * Callback function for the `pantheon.ei.post_types` filter.
+ * Sets the supported post types to a non-existant type.
+ *
+ * @return array An array of allowed post types.
+ */
+function do_not_allow_any_post_types() : array {
+	return [ 'none' ];
 }
 
 /**
