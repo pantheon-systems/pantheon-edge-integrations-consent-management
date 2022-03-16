@@ -1,5 +1,8 @@
 var Pantheon = window.Pantheon || {};
 
+/**
+ * Set up some variables.
+ */
 Pantheon.Consent = {
 	giveConsentButton: document.querySelector('.give-consent'),
 	revokeConsentButton: document.querySelector('.revoke-consent'),
@@ -10,6 +13,11 @@ Pantheon.Consent = {
 	consentMessage: document.querySelector('.cookie-consent-banner__inner'),
 };
 
+/**
+ * Check if consent has been given for marketing cookies.
+ *
+ * @returns {Boolean}
+ */
 Pantheon.Consent.cookieSaved = function () {
 	let consentExists = false;
 	if ( wp_has_consent( 'marketing' ) ) {
@@ -19,6 +27,9 @@ Pantheon.Consent.cookieSaved = function () {
 	return consentExists;
 }
 
+/**
+ * Update the consent status on button click for marketing cookies and display an updated message.
+ */
 Pantheon.Consent.updateConsent = function () {
 	if ( this.classList.contains( 'give-consent' ) ) {
 		wp_set_consent( 'marketing', 'allow' );
@@ -31,15 +42,21 @@ Pantheon.Consent.updateConsent = function () {
 	Pantheon.Consent.showUpdatedMessage();
 }
 
+/**
+ * Display the banner if consent has not been given.
+ */
 Pantheon.Consent.maybeDisplayBanner = function () {
 	if (
 		! Pantheon.Consent.cookieSaved() &&
 		Pantheon.Consent.consentBanner
 	) {
-		Pantheon.Consent.consentBanner.style.display = 'block';
+		Pantheon.Consent.consentBanner.style.display = 'grid';
 	}
 }
 
+/**
+ * Display the updated message.
+ */
 Pantheon.Consent.showUpdatedMessage = function () {
 	const consentUpdated = document.querySelector( '.cookie-consent-banner__updated');
 	consentUpdated.style.display = 'grid';
@@ -47,7 +64,10 @@ Pantheon.Consent.showUpdatedMessage = function () {
 
 }
 
+// Do all the things!
 Pantheon.Consent.maybeDisplayBanner();
+
+// Listen for button clickes.
 Pantheon.Consent.giveConsentButton.addEventListener( 'click', Pantheon.Consent.updateConsent );
 Pantheon.Consent.revokeConsentButton.addEventListener( 'click', Pantheon.Consent.updateConsent );
 Pantheon.Consent.closeUpdated.addEventListener( 'click', () => {
