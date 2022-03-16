@@ -13,9 +13,6 @@ use Pantheon\EI\WP\Interest;
  * Bootstrap the plugin.
  */
 function bootstrap() {
-	// Check for the WP Consent API.
-	add_action( 'init', __NAMESPACE__ . '\\maybe_require_wp_consent_api', 1 );
-
 	// Register the EI plugin with the Consent API.
 	$plugin = WP_PLUGIN_DIR . '/pantheon-wordpress-edge-integrations/pantheon-wordpress-edge-integrations.php';
 	add_filter( "wp_consent_api_registered_$plugin", '__return_true' );
