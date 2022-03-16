@@ -40,8 +40,8 @@ function enqueue_assets() {
 	$js = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? plugin_dir_url( __DIR__ ) . 'assets/js/main.js' : plugin_dir_url( __DIR__ ) . 'dist/js/main.js';
 	$css = plugin_dir_url( __DIR__ ) . 'dist/css/styles.css';
 
-	wp_enqueue_script( 'pantheon-ei-consent', $js, [ 'wp-consent-api' ], '0.1.3', true );
-	wp_enqueue_style( 'pantheon-ei-consent', $css, [ 'dashicons' ], '0.1.3', 'screen' );
+	wp_enqueue_script( 'pantheon-ei-consent', $js, [ 'wp-consent-api' ], '0.1.4', true );
+	wp_enqueue_style( 'pantheon-ei-consent', $css, [ 'dashicons' ], '0.1.4', 'screen' );
 }
 
 /**
