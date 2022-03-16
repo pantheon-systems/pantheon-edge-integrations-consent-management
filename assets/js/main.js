@@ -36,7 +36,7 @@ Pantheon.Consent.maybeDisplayBanner = function () {
 		! Pantheon.Consent.cookieSaved() &&
 		Pantheon.Consent.consentBanner
 	) {
-		Pantheon.Consent.consentBanner.style.display = 'block';
+		Pantheon.Consent.consentBanner.style.display = 'grid';
 	}
 }
 
