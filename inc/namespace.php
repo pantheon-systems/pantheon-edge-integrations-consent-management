@@ -13,9 +13,6 @@ use Pantheon\EI\WP\Interest;
  * Bootstrap the plugin.
  */
 function bootstrap() {
-	// Check for the WP Consent API.
-	add_action( 'init', __NAMESPACE__ . '\\maybe_require_wp_consent_api', 1 );
-
 	// Register the EI plugin with the Consent API.
 	$plugin = WP_PLUGIN_DIR . '/pantheon-wordpress-edge-integrations/pantheon-wordpress-edge-integrations.php';
 	add_filter( "wp_consent_api_registered_$plugin", '__return_true' );
@@ -43,8 +40,8 @@ function enqueue_assets() {
 	$js = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? plugin_dir_url( __DIR__ ) . 'assets/js/main.js' : plugin_dir_url( __DIR__ ) . 'dist/js/main.js';
 	$css = plugin_dir_url( __DIR__ ) . 'dist/css/styles.css';
 
-	wp_enqueue_script( 'pantheon-ei-consent', $js, [ 'wp-consent-api' ], '0.1.0', true );
-	wp_enqueue_style( 'pantheon-ei-consent', $css, [], '0.1.0', 'screen' );
+	wp_enqueue_script( 'pantheon-ei-consent', $js, [ 'wp-consent-api' ], '0.1.3', true );
+	wp_enqueue_style( 'pantheon-ei-consent', $css, [ 'dashicons' ], '0.1.3', 'screen' );
 }
 
 /**
@@ -94,17 +91,33 @@ function check_consent() {
 
 	if ( ! wp_has_consent( 'marketing' ) ) {
 		// If consent hasn't been granted, don't vary the cache.
-		add_filter( 'pantheon.ei.supported_vary_headers', function() {
-			return [
-				'Audience-Set' => false,
-				'Audience' => false,
-				'Interest' => false,
-			];
-		} );
-
-		// Dequeue the interest script.
-		wp_dequeue_script( 'pantheon-ei-interest' );
+		add_filter( 'pantheon.ei.supported_vary_headers', __NAMESPACE__ . '\\do_not_send_vary_headers' );
+		add_filter( 'pantheon.ei.post_types', __NAMESPACE__ . '\\do_not_allow_any_post_types' );
 	}
+}
+
+/**
+ * Callback function for the `pantheon.ei.supported_vary_headers` filter.
+ * Denies all vary headers.
+ *
+ * @return array An array of rejected vary headers.
+ */
+function do_not_send_vary_headers() : array {
+	return [
+		'Audience-Set' => false,
+		'Audience' => false,
+		'Interest' => false,
+	];
+}
+
+/**
+ * Callback function for the `pantheon.ei.post_types` filter.
+ * Sets the supported post types to a non-existant type.
+ *
+ * @return array An array of allowed post types.
+ */
+function do_not_allow_any_post_types() : array {
+	return [ 'none' ];
 }
 
 /**

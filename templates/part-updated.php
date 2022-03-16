@@ -12,7 +12,7 @@
 			<?php esc_html_e( 'Cookie preferences updated.', 'pantheon-edge-integrations-consent-management' ); ?>
 		</span>
 	</p>
-	<button class="cookie-consent-banner__updated-close">
+	<button class="cookie-consent-banner__updated-close close">
 			<span class="screen-reader-text">
 				<?php esc_html_e( 'Close', 'pantheon-edge-integrations-consent-management' ); ?>
 			</span>
