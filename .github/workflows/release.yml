@@ -22,7 +22,7 @@ jobs:
 
     - name: Populate Changelog
       run: |
-        node .github/workflows/changelog.js README.md
+        composer changelog
         git add CHANGELOG.md
         git commit -m "Updated changelog"
       env:
