@@ -37,6 +37,7 @@
         "wordpress/wordpress": "dev-master as 5.9"
     },
     "scripts": {
+        "changelog": "node .github/workflows/changelog.js README.md",
         "lint:php": "find ./plugin.php ./inc ./tests -name '*.php' -exec php -l {} \\;",
         "lint:phpcs": "vendor/bin/phpcs -s --standard=phpcs.ruleset.xml",
         "lint:phpcbf": "vendor/bin/phpcbf -s --standard=phpcs.ruleset.xml",
