@@ -18,6 +18,8 @@ This plugin provides an interface for managing cookie consent with Edge Integrat
 
 A banner is displayed if no consent has been given yet. The interest and geo tracking functionality does not operate until consent is given. If consent is revoked, neither form of tracking will be active.
 
+In addition, suggested text is provided on the Privacy page in the admin to add to your site's privacy or cookie policy page.
+
 ### How it works
 
 The WP Consent API adds a programmatic interface to manage and track a user's consent level for cookies and other forms of local storage frequently used for storing user preferences, tracking information, etc. It does this by establishing a range of cookie categories (described in the [Frequently Asked Questions](https://github.com/rlankhorst/wp-consent-level-api#frequently-asked-questions) like statistics, marketing and functional.
