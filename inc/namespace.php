@@ -18,6 +18,7 @@ function bootstrap() {
 	add_filter( "wp_consent_api_registered_$plugin", '__return_true' );
 	add_filter( 'wp_get_consent_type', __NAMESPACE__ . '\\set_consent_type' );
 	add_action( 'init', __NAMESPACE__ . '\\check_consent' );
+	add_action( 'admin_init', __NAMESPACE__ . '\\suggest_privacy_policy_text' );
 	if ( ! is_admin() ) {
 		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
 		add_action( 'wp_footer', __NAMESPACE__ . '\\load_consent_banner' );
@@ -127,4 +128,25 @@ function do_not_allow_any_post_types() : array {
  */
 function set_consent_type() : string {
 	return 'optin';
+}
+
+function suggest_privacy_policy_text() {
+	if ( ! function_exists( 'wp_add_privacy_policy_content' ) ) {
+		return;
+	}
+
+	$content = sprintf(
+		'<h2>%1$s</h2>
+		<p>
+		<strong class="privacy-policy-tutorial">%2$s</strong>
+		%3$s</p>',
+		__( 'Pantheon WordPress Edge Integrations', 'pantheon-edge-integrations-consent-management' ),
+		__( 'Suggested Text:', 'pantheon-edge-integrations-consent-management' ),
+		__( 'This site uses cookies to track your interests and to improve your site experience. By accepting all cookies, you are consenting to the use of this information.', 'pantheon-edge-integrations-consent-management' )
+	);
+
+	wp_add_privacy_policy_content(
+		__( 'Pantheon WordPress Edge Integrations', 'pantheon-edge-integrations-consent-management' ),
+		wp_kses_post( wpautop( $content, false ) )
+	);
 }
