@@ -130,6 +130,9 @@ function set_consent_type() : string {
 	return 'optin';
 }
 
+/**
+ * Suggest the privacy policy text.
+ */
 function suggest_privacy_policy_text() {
 	if ( ! function_exists( 'wp_add_privacy_policy_content' ) ) {
 		return;
