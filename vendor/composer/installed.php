@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-438e39357e223eead6c9c145cdd5a45fcb0e1209',
-        'version' => 'dev-438e39357e223eead6c9c145cdd5a45fcb0e1209',
+        'pretty_version' => 'dev-a9fc40338baaf5ed4c096557ae2cff3e1e0246ef',
+        'version' => 'dev-a9fc40338baaf5ed4c096557ae2cff3e1e0246ef',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '438e39357e223eead6c9c145cdd5a45fcb0e1209',
+        'reference' => 'a9fc40338baaf5ed4c096557ae2cff3e1e0246ef',
         'name' => 'pantheon-systems/pantheon-edge-integrations-consent-management',
         'dev' => false,
     ),
     'versions' => array(
         'pantheon-systems/pantheon-edge-integrations-consent-management' => array(
-            'pretty_version' => 'dev-438e39357e223eead6c9c145cdd5a45fcb0e1209',
-            'version' => 'dev-438e39357e223eead6c9c145cdd5a45fcb0e1209',
+            'pretty_version' => 'dev-a9fc40338baaf5ed4c096557ae2cff3e1e0246ef',
+            'version' => 'dev-a9fc40338baaf5ed4c096557ae2cff3e1e0246ef',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '438e39357e223eead6c9c145cdd5a45fcb0e1209',
+            'reference' => 'a9fc40338baaf5ed4c096557ae2cff3e1e0246ef',
             'dev_requirement' => false,
         ),
         'rlankhorst/wp-consent-level-api' => array(

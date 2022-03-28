@@ -1,6 +1,6 @@
 # Pantheon Edge Integrations Consent Management
 
-Stable tag: 0.1.4  
+Stable tag: 0.1.5  
 Requires at least: 5.8  
 Tested up to: 5.9  
 Requires PHP: 7.4  
@@ -17,6 +17,8 @@ Implements [WP Consent API](https://github.com/rlankhorst/WP-Consent-Level-API) 
 This plugin provides an interface for managing cookie consent with Edge Integrations: Personalization for WordPress. It's built using the [WP Consent API](https://github.com/rlankhorst/WP-Consent-Level-API) feature plugin to manage consent levels and registers the cookies & local storage data with the Consent API.
 
 A banner is displayed if no consent has been given yet. The interest and geo tracking functionality does not operate until consent is given. If consent is revoked, neither form of tracking will be active.
+
+In addition, suggested text is provided on the Privacy page in the admin to add to your site's privacy or cookie policy page.
 
 ### How it works
 

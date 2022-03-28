@@ -1,6 +1,6 @@
 {
   "name": "pantheon-edge-integrations-consent-management",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Implements the WP Consent API to manage consent with Pantheon Edge Integrations.",
   "main": "index.js",
   "scripts": {
