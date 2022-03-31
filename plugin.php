@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Pantheon Edge Integrations Consent Management
  * Description: Implements WP Consent API into Pantheon Edge Integrations to manage consent and data tracking.
- * Version: 0.1.6
+ * Version: 0.1.7-dev
  * Author: Pantheon
  * Author URI: https://pantheon.io
  * Requires at least: 5.0
