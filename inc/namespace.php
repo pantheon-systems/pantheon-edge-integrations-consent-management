@@ -13,9 +13,20 @@ use Pantheon\EI\WP\Interest;
  * Bootstrap the plugin.
  */
 function bootstrap() {
+	// Define some constants we'll use later.
+	define( 'EI_CONSENT_MANAGEMENT_DIR', dirname( __DIR__ ) );
+	define( 'EI_CONSENT_MANAGEMENT_FILE', EI_CONSENT_MANAGEMENT_DIR . '/plugin.php' );
+	$plugin_data = get_file_data( EI_CONSENT_MANAGEMENT_FILE, [ 'Version' => 'Version' ] );
+	$plugin_version = $plugin_data['Version'];
+	define( 'EI_CONSENT_MANAGEMENT_VERSION', $plugin_version );
+
+	$edge_integrations = WP_PLUGIN_DIR . '/pantheon-wordpress-edge-integrations/pantheon-wordpress-edge-integrations.php';
+
+	// Makre sure WP Consent API is loaded.
+	add_action( 'plugins_loaded', __NAMESPACE__ . '\\maybe_require_wp_consent_api', 9 );
+
 	// Register the EI plugin with the Consent API.
-	$plugin = WP_PLUGIN_DIR . '/pantheon-wordpress-edge-integrations/pantheon-wordpress-edge-integrations.php';
-	add_filter( "wp_consent_api_registered_$plugin", '__return_true' );
+	add_filter( "wp_consent_api_registered_$edge_integrations", '__return_true' );
 	add_filter( 'wp_get_consent_type', __NAMESPACE__ . '\\set_consent_type' );
 	add_action( 'init', __NAMESPACE__ . '\\check_consent' );
 	add_action( 'admin_init', __NAMESPACE__ . '\\suggest_privacy_policy_text' );
@@ -30,7 +41,8 @@ function bootstrap() {
  */
 function maybe_require_wp_consent_api() {
 	if ( ! class_exists( 'WP_CONSENT_API' ) ) {
-		require_once dirname( __FILE__, 2 ) . '/vendor/rlankhorst/wp-consent-level-api/wp-consent-api.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'vendor/rlankhorst/wp-consent-level-api/wp-consent-api.php';
+		\WP_CONSENT_API::get_instance();
 	}
 }
 
@@ -41,8 +53,8 @@ function enqueue_assets() {
 	$js = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? plugin_dir_url( __DIR__ ) . 'assets/js/main.js' : plugin_dir_url( __DIR__ ) . 'dist/js/main.js';
 	$css = plugin_dir_url( __DIR__ ) . 'dist/css/styles.css';
 
-	wp_enqueue_script( 'pantheon-ei-consent', $js, [ 'wp-consent-api' ], '0.1.4', true );
-	wp_enqueue_style( 'pantheon-ei-consent', $css, [ 'dashicons' ], '0.1.4', 'screen' );
+	wp_enqueue_script( 'pantheon-ei-consent', $js, [ 'wp-consent-api' ], EI_CONSENT_MANAGEMENT_VERSION, true );
+	wp_enqueue_style( 'pantheon-ei-consent', $css, [ 'dashicons' ], EI_CONSENT_MANAGEMENT_VERSION, 'screen' );
 }
 
 /**
