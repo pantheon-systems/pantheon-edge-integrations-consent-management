@@ -41,7 +41,8 @@ function bootstrap() {
  */
 function maybe_require_wp_consent_api() {
 	if ( ! class_exists( 'WP_CONSENT_API' ) ) {
-		require_once dirname( __FILE__, 2 ) . '/vendor/rlankhorst/wp-consent-level-api/wp-consent-api.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'vendor/rlankhorst/wp-consent-level-api/wp-consent-api.php';
+		\WP_CONSENT_API::get_instance();
 	}
 }
 
