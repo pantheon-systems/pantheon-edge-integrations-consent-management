@@ -16,7 +16,7 @@ function bootstrap() {
 	// Define some constants we'll use later.
 	define( 'EI_CONSENT_MANAGEMENT_DIR', dirname( __DIR__ ) );
 	define( 'EI_CONSENT_MANAGEMENT_FILE', EI_CONSENT_MANAGEMENT_DIR . '/plugin.php' );
-	$plugin_data = get_file_data( EI_CONSENT_MANAGEMENT_FILE, array( 'Version' => 'Version' ) );
+	$plugin_data = get_file_data( EI_CONSENT_MANAGEMENT_FILE, [ 'Version' => 'Version' ] );
 	$plugin_version = $plugin_data['Version'];
 	define( 'EI_CONSENT_MANAGEMENT_VERSION', $plugin_version );
 
