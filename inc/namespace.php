@@ -28,7 +28,7 @@ function bootstrap() {
 	// Register the EI plugin with the Consent API.
 	add_filter( "wp_consent_api_registered_$edge_integrations", '__return_true' );
 	add_filter( 'wp_get_consent_type', __NAMESPACE__ . '\\set_consent_type' );
-	add_action( 'init', __NAMESPACE__ . '\\check_consent' );
+	add_action( 'init', __NAMESPACE__ . '\\check_consent', 1 );
 	add_action( 'admin_init', __NAMESPACE__ . '\\suggest_privacy_policy_text' );
 	if ( ! is_admin() ) {
 		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
