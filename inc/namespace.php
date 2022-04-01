@@ -113,6 +113,8 @@ function check_consent() {
  * Callback function for the `pantheon.ei.supported_vary_headers` filter.
  * Denies all vary headers.
  *
+ * @param array $headers The passed vary headers.
+ *
  * @return array An array of rejected vary headers.
  */
 function do_not_send_vary_headers( array $headers ) : array {
