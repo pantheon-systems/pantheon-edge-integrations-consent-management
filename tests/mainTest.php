@@ -18,7 +18,11 @@ class testsMain extends TestCase {
 	}
 
 	public function testDoNotSendVaryHeaders() {
-		$vary_headers = do_not_send_vary_headers();
+		$vary_headers = do_not_send_vary_headers( [
+			'Audience' => true,
+			'Audience-Set' => true,
+			'Interest' => true,
+		] );
 
 		$this->assertTrue( is_array( $vary_headers ) );
 		$this->assertFalse( $vary_headers['Audience'] );
