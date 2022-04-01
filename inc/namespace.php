@@ -115,12 +115,11 @@ function check_consent() {
  *
  * @return array An array of rejected vary headers.
  */
-function do_not_send_vary_headers() : array {
-	return [
-		'Audience-Set' => false,
-		'Audience' => false,
-		'Interest' => false,
-	];
+function do_not_send_vary_headers( array $headers ) : array {
+	$headers['Audience-Set'] = false;
+	$headers['Audience'] = false;
+	$headers['Interest'] = false;
+	return $headers;
 }
 
 /**
