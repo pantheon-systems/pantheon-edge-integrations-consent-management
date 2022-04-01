@@ -28,7 +28,7 @@ function bootstrap() {
 	// Register the EI plugin with the Consent API.
 	add_filter( "wp_consent_api_registered_$edge_integrations", '__return_true' );
 	add_filter( 'wp_get_consent_type', __NAMESPACE__ . '\\set_consent_type' );
-	add_action( 'init', __NAMESPACE__ . '\\check_consent' );
+	add_action( 'init', __NAMESPACE__ . '\\check_consent', 1 );
 	add_action( 'admin_init', __NAMESPACE__ . '\\suggest_privacy_policy_text' );
 	if ( ! is_admin() ) {
 		add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_assets' );
@@ -104,8 +104,8 @@ function check_consent() {
 
 	if ( ! wp_has_consent( 'marketing' ) ) {
 		// If consent hasn't been granted, don't vary the cache.
-		add_filter( 'pantheon.ei.supported_vary_headers', __NAMESPACE__ . '\\do_not_send_vary_headers' );
-		add_filter( 'pantheon.ei.post_types', __NAMESPACE__ . '\\do_not_allow_any_post_types' );
+		add_filter( 'pantheon.ei.supported_vary_headers', __NAMESPACE__ . '\\do_not_send_vary_headers', 11 );
+		add_filter( 'pantheon.ei.post_types', __NAMESPACE__ . '\\do_not_allow_any_post_types', 11 );
 	}
 }
 
@@ -113,14 +113,15 @@ function check_consent() {
  * Callback function for the `pantheon.ei.supported_vary_headers` filter.
  * Denies all vary headers.
  *
+ * @param array $headers The passed vary headers.
+ *
  * @return array An array of rejected vary headers.
  */
-function do_not_send_vary_headers() : array {
-	return [
-		'Audience-Set' => false,
-		'Audience' => false,
-		'Interest' => false,
-	];
+function do_not_send_vary_headers( array $headers ) : array {
+	$headers['Audience-Set'] = false;
+	$headers['Audience'] = false;
+	$headers['Interest'] = false;
+	return $headers;
 }
 
 /**
