@@ -28,6 +28,7 @@ function bootstrap() {
 	// Register the EI plugin with the Consent API.
 	add_filter( "wp_consent_api_registered_$edge_integrations", '__return_true' );
 	add_filter( 'wp_get_consent_type', __NAMESPACE__ . '\\set_consent_type' );
+	add_filter( 'wp_consent_cookie_prefix', __NAMESPACE__ . '\\set_cookie_prefix' );
 	add_action( 'init', __NAMESPACE__ . '\\check_consent', 1 );
 	add_action( 'admin_init', __NAMESPACE__ . '\\suggest_privacy_policy_text' );
 	if ( ! is_admin() ) {
@@ -141,6 +142,18 @@ function do_not_allow_any_post_types() : array {
  */
 function set_consent_type() : string {
 	return 'optin';
+}
+
+/**
+ * Defines the consent cookie prefix.
+ *
+ * Uses STYXKEY_ prefix to avoid conflicts with other plugins and Pantheon caching.
+ *
+ * @see https://pantheon.io/docs/cookies#setting-cookies-for-platform-domains
+ * @return string The cookie prefix.
+ */
+function set_cookie_prefix() : string {
+	return 'STYXKEY_consent';
 }
 
 /**
