@@ -34,7 +34,7 @@
     "require-dev": {
         "humanmade/coding-standards": "^1.1",
         "phpunit/phpunit": "^9.5",
-        "wordpress/wordpress": "dev-master as 5.9"
+        "wordpress/wordpress": "dev-master as 6.1"
     },
     "scripts": {
         "changelog": "node .github/workflows/changelog.js README.md",
