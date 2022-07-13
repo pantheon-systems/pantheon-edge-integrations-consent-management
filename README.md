@@ -1,8 +1,8 @@
 # Pantheon Edge Integrations Consent Management
 
-Stable tag: 0.2.0  
+Stable tag: 0.3.0  
 Requires at least: 5.8  
-Tested up to: 5.9  
+Tested up to: 6.1  
 Requires PHP: 7.4  
 License: MIT  
 Tags: pantheon, personalization, edge integrations, consent, developer
