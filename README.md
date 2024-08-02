@@ -10,7 +10,11 @@ Contributors: jazzs3quence, getpantheon
 
 Implements [WP Consent API](https://github.com/rlankhorst/WP-Consent-Level-API) into [Pantheon Edge Integrations](https://pantheon.io/docs/guides/edge-integrations) to manage consent and data tracking. 
 
-[![Unsupported](https://img.shields.io/badge/pantheon-unsupported-yellow?logo=pantheon&color=FFDC28)](https://pantheon.io/docs/oss-support-levels#unsupported) ![Pantheon Edge Integrations Consent Management](https://github.com/pantheon-systems/pantheon-edge-integrations-consent-management/actions/workflows/test.yml/badge.svg) [![GitHub release](https://img.shields.io/github/release/pantheon-systems/pantheon-edge-integrations-consent-management.svg)](https://github.com/pantheon-systems/pantheon-edge-integrations-consent-management/releases/)
+## Archived project
+This project is **archived** as of August 2024 as it no longer receives active development.
+The architecture provided by the tools in this SDK and the related projects are still valid and will continue to work on Pantheon AGCDN. However, we will not be responding to issues or pull requests or building these tools out more than they are already.
+
+[![Unsupported](https://img.shields.io/badge/pantheon-deprecated-yellow?logo=pantheon&color=FFDC28)](https://docs.pantheon.io/oss-support-levels#deprecated) ![Pantheon Edge Integrations Consent Management](https://github.com/pantheon-systems/pantheon-edge-integrations-consent-management/actions/workflows/test.yml/badge.svg) [![GitHub release](https://img.shields.io/github/release/pantheon-systems/pantheon-edge-integrations-consent-management.svg)](https://github.com/pantheon-systems/pantheon-edge-integrations-consent-management/releases/)
 
 ## Description
 
